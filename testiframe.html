@@ -9,7 +9,7 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://www.unpkg.com/@eohjsc/era-widget@1.0.14/src/index.js"></script>
-    //<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
+    <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
     <style>
         .highcharts-figure,
         .highcharts-data-table table {
@@ -104,7 +104,7 @@
 
         eraWidget.onValues((values) => {
             const input = document.getElementById('V4');
-            V4Value = values[config.id].value; // Giả sử values[config.id].value là nhịp tim thực tế
+            V4Value = values[config.id].value;
             input.checked = values[config.id].value > 0; // Đặt trạng thái của checkbox dựa trên nhịp tim
         });
 
@@ -117,7 +117,7 @@
 
             setInterval(function () {
                 const x = (new Date()).getTime(), // thời gian hiện tại
-                    y = V4; // Giá trị nhịp tim thực tế
+                    y = V4Value; // Giá trị nhịp tim thực tế
 
                 series.addPoint([x, y], true, true);
                 dataBuffer.push([x, y]);
@@ -184,7 +184,7 @@
                     text: 'V4'
                 },
                 min: 0, // Giá trị tối thiểu của trục Y
-                max: 130, // Giá trị tối đa của trục Y
+                max: 90, // Giá trị tối đa của trục Y
                 tickInterval: 10, // Khoảng cách giữa các dấu vạch trên trục Y
                 plotLines: [
                     {
